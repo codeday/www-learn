@@ -9,7 +9,7 @@ import Page from '../components/page';
 import IconBox, {HeaderIcon, HeaderText, Body} from '@codeday/topo/Molecule/IconBox';
 import Image from '@codeday/topo/Atom/Image';
 
-const boxWidth = 300;
+const boxWidth = 330;
 const boxTextAlignment = "left";
 
 export default function Home() {
@@ -35,50 +35,67 @@ export default function Home() {
 				<Text>Not sure which track to start on? Take a fun little quiz to start learning!</Text>
 				<Box mb={5}><Button>Take Quiz</Button></Box>
 
-				<IconBox maxWidth={boxWidth} d="inline-block">
+				<IconBox mb={2} mr={2} textAlign={boxTextAlignment} maxWidth={boxWidth} d="inline-block">
 					<HeaderIcon><Image src="https://placekitten.com/64/64" borderRadius="full" /></HeaderIcon>
 					<HeaderText>Construct</HeaderText>
 					<Body>Start here if you're a complete begineer and finish by making your own game!
-						<Button variant="solid" variantColor="brand">solid</Button>
+						<br></br>
+						<Button variant="solid" variantColor="brand" href="/construct">Start</Button>
 					</Body>
     		</IconBox>
 
-				<IconBox textAlign="left" maxWidth={boxWidth} d="inline-block">
+				<IconBox textAlign={boxTextAlignment} maxWidth={boxWidth} d="inline-block">
 					<HeaderIcon d="inline-block"><Image src="https://placekitten.com/64/64" borderRadius="full" /></HeaderIcon>
 					<HeaderText d="inline-block">Discord Bot</HeaderText>
 					<Body>Create your very own discord bot! Don't worry, you can pick your programming language!
-						<br></br><Button variant="solid" variantColor="brand">solid</Button>
+						<br></br>
+						<Button variant="solid" variantColor="brand">Start</Button>
 					</Body>
     		</IconBox>
 
-				<IconBox maxWidth={boxWidth} d="inline-block">
+				<IconBox textAlign={boxTextAlignment} maxWidth={boxWidth} d="inline-block">
 					<HeaderIcon><Image src="https://placekitten.com/64/64" borderRadius="full"/></HeaderIcon>
 					<HeaderText>Unity</HeaderText>
-					<Body>Take yourself to the next step and learn the fundamentals of using the Unity Engine</Body>
+					<Body>Take yourself to the next step and learn the fundamentals of using the Unity Engine
+						<br></br>
+						<Button variant="solid" variantColor="brand">Start</Button>
+					</Body>
     		</IconBox>
 
-				<IconBox maxWidth={boxWidth} d="inline-block">
+				<IconBox textAlign={boxTextAlignment} maxWidth={boxWidth} d="inline-block">
 					<HeaderIcon><Image src="https://placekitten.com/64/64" borderRadius="full"/></HeaderIcon>
 					<HeaderText>Unreal</HeaderText>
-					<Body>Take yourself to the next step and learn the fundamentals of using the Unreal Engine</Body>
+					<Body>Take yourself to the next step and learn the fundamentals of using the Unreal Engine
+						<br></br>
+						<Button variant="solid" variantColor="brand">Start</Button>
+					</Body>
     		</IconBox>
 
-				<IconBox maxWidth={boxWidth} d="inline-block">
+				<IconBox textAlign={boxTextAlignment} maxWidth={boxWidth} d="inline-block">
 					<HeaderIcon><Image src="https://placekitten.com/64/64" borderRadius="full"/></HeaderIcon>
 					<HeaderText>Python</HeaderText>
-					<Body>Learn to program with Python, which is a simple and powerful language for begineers</Body>
+					<Body>Learn to program with Python, which is a simple and powerful language for begineers
+						<br></br>
+						<Button variant="solid" variantColor="brand">Start</Button>
+					</Body>
     		</IconBox>
 
-				<IconBox maxWidth={boxWidth} d="inline-block">
+				<IconBox textAlign={boxTextAlignment} maxWidth={boxWidth} d="inline-block">
 					<HeaderIcon><Image src="https://placekitten.com/64/64" borderRadius="full"/></HeaderIcon>
 					<HeaderText>Java</HeaderText>
-					<Body>Learn to program with Java, which has been tried and tested to be one of the best languages out there!</Body>
+					<Body>Learn to program with Java, which has been tried and tested to be one of the best languages out there!
+						<br></br>
+						<Button variant="solid" variantColor="brand">Start</Button>
+					</Body>
     		</IconBox>
 
-				<IconBox maxWidth={boxWidth} d="inline-block">
+				<IconBox textAlign={boxTextAlignment} maxWidth={boxWidth} d="inline-block">
 					<HeaderIcon><Image src="https://placekitten.com/64/64" borderRadius="full"/></HeaderIcon>
 					<HeaderText>Web Development</HeaderText>
-					<Body>Learn the fundamentals of HTML, CSS, and JavaScript as you create your own website.</Body>
+					<Body>Learn the fundamentals of HTML, CSS, and JavaScript as you create your own website.
+						<br></br>
+						<Button variant="solid" variantColor="brand">Start</Button>
+					</Body>
     		</IconBox>
 			</Content>
 		</Page>
