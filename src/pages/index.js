@@ -61,7 +61,7 @@ export default function Home({ tracks }) {
 
 function TrackBox({ info }) {
 	// Go to tracks/construct/lesson/1.js</a>
-	const link = (info.name).replace(' ', '-').toLowerCase() + "/lesson/1";
+	const link = "lesson/" + (info.name).replace(' ', '-').toLowerCase() + "/1";
   return (
 		<IconBox mb={2} mr={2} textAlign="left" maxWidth={325}>
 			<HeaderIcon h={75}><Image w="25%" src={info.logo.url} /></HeaderIcon>
@@ -69,7 +69,7 @@ function TrackBox({ info }) {
 			<Body>{info.description}
 				<br></br>
 				<Link href={link}>
-					<Button mt={2} variant="solid" variantColor="brand" href="/">Start</Button>
+					<Button mt={2} variant="solid" variantColor="brand">Start</Button>
         </Link>
 			</Body>
 		</IconBox>
