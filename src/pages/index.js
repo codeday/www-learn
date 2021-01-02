@@ -12,7 +12,7 @@ import Image from '@codeday/topo/Atom/Image';
 const boxWidth = 330;
 const boxTextAlignment = "left";
 
-export default function Home() {
+export default function Home({ tracks }) {
 	return (
 		<Page slug="/">
 			<Content textAlign="center">
@@ -26,7 +26,6 @@ export default function Home() {
 				<Box textAlign="center">
 					<Heading as="h4">Browse the available tracks you can master</Heading>
 				</Box>
-
 			</Content>
 
 			<Divider/>
@@ -34,6 +33,26 @@ export default function Home() {
 			<Content textAlign="center">
 				<Text>Not sure which track to start on? Take a fun little quiz to start learning!</Text>
 				<Box mb={5}><Button>Take Quiz</Button></Box>
+
+				<Box>
+					<List>
+						<Flex size="100%" justify="left" alignItems="left" flexDirection="row" flexWrap="wrap">
+							{!(levels) ? (
+								<>
+									<Item><Skelly /></Item>
+									<Item><Skelly /></Item>
+									<Item><Skelly /></Item>
+									<Item><Skelly /></Item>
+									<Item><Skelly /></Item>
+									<Item><Skelly /></Item>
+								</>
+							) : Object.keys(tracks).map((key, index) => <TrackBox key={tracks[key].name} info={tracks[key]}></TrackBox> )}
+						</Flex>
+					</List>
+			</Box>
+
+
+
 
 				<IconBox mb={2} mr={2} textAlign={boxTextAlignment} maxWidth={boxWidth} d="inline-block">
 					<HeaderIcon><Image src="https://placekitten.com/64/64" borderRadius="full" /></HeaderIcon>
@@ -101,3 +120,42 @@ export default function Home() {
 		</Page>
 	)
 }
+
+function TrackBox({ info }) {
+  return (
+  <Box marginRight={3} w="275px">
+        <Box borderWidth="2px" p={3} w="100%" borderColor={level.boxColor} roundedTopLeft="lg" roundedTopRight="lg" color={level.titleColor} backgroundColor={level.boxColor}>
+          {level.name}
+        </Box>
+        <Box borderWidth="2px" borderColor={level.borderColor} roundedBottomLeft="lg" roundedBottomRight="lg">
+          <Box backgroundColor={level.boxTint} p={3} w="100%">
+            <strong>${level.amount}/{level.amountInterval}</strong><br></br>
+            {level.description}
+          </Box>
+        </Box>
+
+  </Box>
+  );
+}
+
+const query = () => `{
+	learn {
+    tracks {
+      items {
+        name
+				description
+				logo
+      }
+    }
+  }
+}`;
+
+export async function getStaticProps() {
+	const data = await apiFetch(query());
+	return {
+		props: {
+			tracks: data?.learn?.tracks || null,
+		},
+		revalidate: 120,
+	}
+};
