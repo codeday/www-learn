@@ -22,7 +22,7 @@ export default function Lesson() {
   const { track } = router.query
 
   const { data, error } = useSwr(
-    query(),
+    query(track),
     apiFetch,
     {
       revalidateOnFocus: false,
