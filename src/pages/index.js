@@ -1,4 +1,3 @@
-
 import { Heading } from '@codeday/topo/Atom/Text';
 import Content from '@codeday/topo/Molecule/Content';
 import Divider from '@codeday/topo/Atom/Divider';
@@ -11,6 +10,7 @@ import Button from '@codeday/topo/Atom/Button';
 import Page from '../components/page';
 import IconBox, {HeaderIcon, HeaderText, Body} from '@codeday/topo/Molecule/IconBox';
 import Image from '@codeday/topo/Atom/Image';
+
 
 const boxWidth = 330;
 const boxTextAlignment = "left";
@@ -60,13 +60,17 @@ export default function Home({ tracks }) {
 }
 
 function TrackBox({ info }) {
+	// Go to tracks/construct/lesson/1.js</a>
+	const link = (info.name).replace(' ', '-').toLowerCase() + "/lesson/1";
   return (
 		<IconBox mb={2} mr={2} textAlign="left" maxWidth={325}>
 			<HeaderIcon h={75}><Image w="25%" src={info.logo.url} /></HeaderIcon>
 			<HeaderText>{info.name}</HeaderText>
 			<Body>{info.description}
 				<br></br>
-				<Button mt={2} variant="solid" variantColor="brand" href="/">Start</Button>
+				<Link href={link}>
+					<Button mt={2} variant="solid" variantColor="brand" href="/">Start</Button>
+        </Link>
 			</Body>
 		</IconBox>
   );
