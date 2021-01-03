@@ -1,3 +1,6 @@
+import React, { forwardRef } from 'react';
+import PropTypes from 'prop-types';
+
 import { useRouter } from 'next/router'
 import Page from '../../../components/page';
 import Content from '@codeday/topo/Molecule/Content';
@@ -11,18 +14,20 @@ import Box from '@codeday/topo/Atom/Box';
 
 const query = (trackName) => `{
   learn {
-    tracks(where: { name: "${trackName}"}, limit: 1){
+    tracks(where: { name: "${trackName}"}){
       ...TrackInformation
     }
   }
 }`;
+
+
 
 export default function Lesson() {
   const router = useRouter()
   const { track } = router.query
 
   const { data, error } = useSwr(
-    query(track),
+    query("Construct"),
     apiFetch,
     {
       revalidateOnFocus: false,
@@ -30,10 +35,11 @@ export default function Lesson() {
     }
   );
 
-  // Let pulled data from GraphQL be set equal to the levels variable
+  // Let pulled data from GraphQL be set equal to the lessons variable
   const lessons = data?.learn?.tracks?.items || {};
+  if (lessons) console.log(lessons);
 
-  console.log(lessons);
+
 
   return (
     <Page slug="/">
@@ -45,5 +51,3 @@ export default function Lesson() {
 		</Page>
   )
 }
-
-
