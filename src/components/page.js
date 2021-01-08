@@ -5,12 +5,16 @@ import Text, { Link } from '@codeday/topo/Atom/Text';
 import Footer from '@codeday/topo/Organism/Footer';
 import Button from '@codeday/topo/Atom/Button';
 import { CodeDay } from '@codeday/topo/Atom/Logo';
+import React from 'react'
+import { signIn, signOut, useSession } from 'next-auth/client'
 
 // TODO: Set production domain
 const DOMAIN = 'https://learn.codeday.org';
 
-export default ({ children, title, darkHeader, slug }) => (
-  <>
+export default function Page({ children, title, darkHeader, slug }) {
+  const [ session, loading ] = useSession()
+
+  return <>
     <DefaultSeo
       title={`${title ? `${title} ~ ` : ''}CodeDay Learn`}
       description="Continue your coding adventure"
@@ -52,11 +56,17 @@ export default ({ children, title, darkHeader, slug }) => (
         <Menu>
           <Button variant="ghost" variantColor="brand" as="a" href="/sponsor">Tracks</Button>
           <Button variant="ghost" variantColor="brand" as="a" href="/volunteer">Contact</Button>
+          {!session && <>
+            <Button onClick={() => signIn('auth0', { callbackUrl: "http://localhost:3000/" })} variant="ghost" variantColor="brand">Sign in</Button>
+          </>}
+          {session && <>
+            <Button variant="ghost" variantColor="brand" as="a" href="/account">My Account</Button>
+          </>}
         </Menu>
       </Header>
       {children}
       <Footer />
     </Box>
   </>
-);
+;}
 
