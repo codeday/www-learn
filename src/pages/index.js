@@ -21,7 +21,7 @@ export default function Home({ tracks }) {
 		<Page slug="/">
 			<Content textAlign="center">
 				<Heading as="h1">Learn At Undescribable Speeds</Heading>
-				<Text>CodeDay Learn is a new program aimed on helping newcomers and experienced programmers continue learning.</Text>
+				<Text>CodeDay Learn is a new program aimed on helping newcomers and experienced programmers continue learning by using Project-based learning</Text>
 			</Content>
 
 			<Divider/>
