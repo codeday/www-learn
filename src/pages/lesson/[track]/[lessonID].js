@@ -12,22 +12,39 @@ import { useString, apiFetch } from '@codeday/topo/utils';
 
 import Box from '@codeday/topo/Atom/Box';
 
-const query = (trackName) => `{
+const query = (trackName, lessonID) => `{
   learn {
-    tracks(where: { name: "${trackName}"}){
-      ...TrackInformation
+    lessons(where: {tags_contains_all: "${trackName}" pageNumber: ${lessonID}}) {
+      items {
+        nameHeader
+        pageNumber
+        hasNextPage
+        content {
+          json
+        }
+        track {
+          name
+          logo {
+            url
+          }
+        }
+        difficulty {
+          name
+          shortDescription
+          hexCodeColor
+        }
+      }
     }
   }
 }`;
 
-
-
 export default function Lesson() {
   const router = useRouter()
-  const { track } = router.query
+  const { track, lessonID } = router.query
+  console.log(track, lessonID);
 
   const { data, error } = useSwr(
-    query("Construct"),
+    query(track, lessonID),
     apiFetch,
     {
       revalidateOnFocus: false,
@@ -36,16 +53,14 @@ export default function Lesson() {
   );
 
   // Let pulled data from GraphQL be set equal to the lessons variable
-  const lessons = data?.learn?.tracks?.items || {};
-  if (lessons) console.log(lessons);
-
-
+  const lesson = data?.learn?.lessons?.items[0] || {};
+  if (lesson) console.log(lesson);
 
   return (
     <Page slug="/">
-			<Content textAlign="center">
+			<Content w="80%" textAlign="center">
         <Box>
-          <p>The track name is {track}</p>
+          
         </Box>
 			</Content>
 		</Page>
