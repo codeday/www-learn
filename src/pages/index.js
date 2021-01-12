@@ -11,10 +11,6 @@ import Page from '../components/page';
 import IconBox, {HeaderIcon, HeaderText, Body} from '@codeday/topo/Molecule/IconBox';
 import Image from '@codeday/topo/Atom/Image';
 
-
-const boxWidth = 330;
-const boxTextAlignment = "left";
-
 export default function Home({ tracks }) {
 	console.log(tracks);
 	return (
@@ -28,16 +24,13 @@ export default function Home({ tracks }) {
 
 			<Content>
 				<Box textAlign="center">
-					<Heading as="h4">Browse the available tracks you can master</Heading>
+					<Heading as="h4">What would you like to build?</Heading>
 				</Box>
 			</Content>
 
 			<Divider/>
 
 			<Content textAlign="center">
-				<Text>Not sure which track to start on? Take a fun little quiz to start learning!</Text>
-				<Box mb={5}><Button>Take Quiz</Button></Box>
-
 				<Box>
 					<List>
 						<Flex size="100%" justify="left" alignItems="left" flexDirection="row" flexWrap="wrap">
@@ -54,6 +47,9 @@ export default function Home({ tracks }) {
 						</Flex>
 					</List>
 			</Box>
+
+			<Text>Not sure which track to start on? Take a fun little quiz to start learning!</Text>
+			<Box mb={5}><Button>Take Quiz</Button></Box>
 			</Content>
 		</Page>
 	)
@@ -68,9 +64,7 @@ function TrackBox({ info }) {
 			<HeaderText>{info.name}</HeaderText>
 			<Body>{info.description}
 				<br></br>
-				<Link href={link}>
-					<Button mt={2} variant="solid" variantColor="brand">Start</Button>
-        </Link>
+				<Button as="a" href={link} mt={2} variant="solid" variantColor="brand">Start</Button>
 			</Body>
 		</IconBox>
   );

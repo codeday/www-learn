@@ -7,9 +7,11 @@ const DifficultyBox = pureRef(({ color, ...props }, ref) => (
   <Box
     w="10%"
     rounded={5}
+    ml={2}
     p={1}
     border={1}
     d="inline-block"
+    textAlign="center"
     borderColor="#56ca53"
     backgroundColor={color}
     fontWeight="bold"

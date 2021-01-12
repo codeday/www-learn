@@ -5,6 +5,7 @@ import Text, { Link, Heading } from '@codeday/topo/Atom/Text';
 import List, { Item as ListItem } from '@codeday/topo/Atom/List';
 import Divider from '@codeday/topo/Atom/Divider';
 import StaticContent from './StaticContent';
+import CodeBlock from '@codeday/topo/Atom/CodeBlock';
 
 const MEDIA_TYPE_VIDEO = ['video/mp4', 'video/mov'];
 const MEDIA_TYPE_IMAGE = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
@@ -50,6 +51,21 @@ function renderTextContent({ value, marks }) {
 
 }
 
+function ContentfulParagraph({content, id, links, root, children, ...props}) {
+  if (content.length == 3) {
+    console.log("made it here");
+    if (content[1].nodeType == "embedded-entry-inline") {
+      console.log("I found an embedded entry line");
+      const asset = links?.assets?.block?.filter((l) => l.sys.id === id)[0];
+      console.log(links);
+      if (!asset) return <></>;
+      return <CodeBlock>{children}</CodeBlock>
+    }
+  }
+
+  return <Text as={!root && 'span'} mb={root && 6}>{children}</Text>
+}
+
 function mapRichText({
   nodeType, content, value, marks, data, links, h1Size, isRootElement,
 }) {
@@ -67,7 +83,7 @@ function mapRichText({
   const nodeTypes = {
     document: <>{innerContent}</>,
     hyperlink: <Link href={data?.uri} target="_blank" rel="noopener">{innerContent}</Link>,
-    paragraph: <Text as={!isRootElement && 'span'} mb={isRootElement && 6}>{innerContent}</Text>,
+    paragraph: <ContentfulParagraph root={isRootElement} links={links} content={content} id={data?.target?.sys?.id}>{innerContent}</ContentfulParagraph>,
     'heading-1': <Heading mb={4} mt={8} as="h1" fontSize={h1SizeCalculated}>{innerContent}</Heading>,
     'heading-2': <Heading mb={4} mt={8} as="h2" fontSize={getSize(h1SizeCalculated, -1)}>{innerContent}</Heading>,
     'heading-3': <Heading mb={3} mt={6} as="h3" fontSize={getSize(h1SizeCalculated, -2)}>{innerContent}</Heading>,
@@ -87,6 +103,7 @@ function mapRichText({
 
 export default function ContentfulRichText({ json, links, h1Size }) {
   if (!json) return <></>;
+  console.log(json);
   return (
     <StaticContent>
       {mapRichText({ ...json, links, h1Size })}
