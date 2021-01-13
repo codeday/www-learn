@@ -5,10 +5,10 @@ import { pureRef } from '@codeday/topo/_utils';
 
 const DifficultyBox = pureRef(({ color, ...props }, ref) => (
   <Box
-    w="10%"
     rounded={5}
-    ml={2}
     p={1}
+    pl={2}
+    pr={2}
     border={1}
     d="inline-block"
     textAlign="center"
