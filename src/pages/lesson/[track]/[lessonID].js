@@ -107,7 +107,7 @@ export default function Lesson() {
                   <Box>
                     <Heading as="h1">{lesson.nameHeader}</Heading>
                     {ContentfulRichText(lesson.content)}
-                    {(lesson.hasNextLesson) ? (
+                    {!(lesson.hasNextPage) ? (
                       <>
                         <Text>This is the last lesson of this track. Come back often to see if more are added.</Text>
                       </>
