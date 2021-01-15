@@ -10,13 +10,19 @@ import Button from '@codeday/topo/Atom/Button';
 import Page from '../components/page';
 import IconBox, {HeaderIcon, HeaderText, Body} from '@codeday/topo/Molecule/IconBox';
 import Image from '@codeday/topo/Atom/Image';
+import TextLoop from "react-text-loop";
 
 export default function Home({ tracks }) {
 	console.log(tracks);
 	return (
 		<Page slug="/">
 			<Content textAlign="center">
-				<Heading as="h1">Learn At Undescribable Speeds</Heading>
+				<Heading as="h1"><TextLoop interval={1000} fade="false">
+                    <span>Learn</span>
+                    <span>Build</span>
+										<span>Create</span>
+										<span>Make</span>
+                </TextLoop>{" "} At Undescribable Speeds</Heading>
 				<Text>CodeDay Learn is a new program aimed on helping newcomers and experienced programmers continue learning by using Project-based learning</Text>
 			</Content>
 
@@ -24,13 +30,11 @@ export default function Home({ tracks }) {
 
 			<Content>
 				<Box textAlign="center">
-					<Heading as="h4">What would you like to build?</Heading>
+					<Heading mb={0} as="h4">Pick a Track</Heading>
 				</Box>
 			</Content>
 
-			<Divider/>
-
-			<Content textAlign="center">
+			<Content  textAlign="center">
 				<Box>
 					<List>
 						<Flex size="100%" justify="left" alignItems="left" flexDirection="row" flexWrap="wrap">
@@ -48,8 +52,9 @@ export default function Home({ tracks }) {
 					</List>
 			</Box>
 
-			<Text>Not sure which track to start on? Take a fun little quiz to start learning!</Text>
+			<Text mb={0}>Not sure which track to start on? Take a fun little quiz!</Text>
 			<Box mb={5}><Button>Take Quiz</Button></Box>
+			<Box mt={2}><Text>We are always working on adding more tracks, keep checking back to keep learning!</Text></Box>
 			</Content>
 		</Page>
 	)

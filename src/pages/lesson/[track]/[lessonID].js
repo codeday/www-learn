@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-
 import { useRouter } from 'next/router'
 import Page from '../../../components/page';
 import Content from '@codeday/topo/Molecule/Content';
@@ -13,6 +12,8 @@ import useSwr from 'swr';
 import Skelly from '@codeday/topo/Atom/Skelly';
 import { useString, apiFetch } from '@codeday/topo/utils';
 import ContentfulRichText from '../../../components/ContentfulRichText'
+import NewContentfulRichText, { options } from '../../../components/NewContentfulRichText'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Image from '@codeday/topo/Atom/Image';
 import DifficultyBox from '../../../components/DifficultyBox';
 import Box from '@codeday/topo/Atom/Box';
@@ -34,6 +35,17 @@ const query = (trackName, lessonID) => `{
                 }
                 contentType
                 url
+              }
+            }
+            entries {
+              inline {
+								sys {
+									id
+                }
+                ...on LearnCodeBlock {
+                  language
+                  code
+                }
               }
             }
           }
@@ -73,7 +85,6 @@ export default function Lesson() {
   // Let pulled data from GraphQL be set equal to the lessons variable
   const lesson = data?.learn?.lessons?.items[0];
 
-  console.log(lesson);
   return (
     <Page slug="/">
       <Content>
@@ -81,7 +92,7 @@ export default function Lesson() {
           <Box p="sticky" w="25%" h={500} backgroundColor="#ffe8e9" borderRadius={20} mr={3}>
             {!(lesson) ? (
               <>
-              <Skelly></Skelly>
+              <Skelly h={500}></Skelly>
               </>
             ) : (
               <>
@@ -101,12 +112,13 @@ export default function Lesson() {
 
           <Box w="70%" textAlign="left">
             {!(lesson) ? (
-                skellyLines(15)
+                skellyLines(25)
               ) : (
               <>
                   <Box>
                     <Heading as="h1">{lesson.nameHeader}</Heading>
                     {ContentfulRichText(lesson.content)}
+
                     {!(lesson.hasNextPage) ? (
                       <>
                         <Text>This is the last lesson of this track. Come back often to see if more are added.</Text>

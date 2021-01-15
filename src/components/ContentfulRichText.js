@@ -51,19 +51,13 @@ function renderTextContent({ value, marks }) {
 
 }
 
-function ContentfulParagraph({content, id, links, root, children, ...props}) {
-  if (content.length == 3) {
-    console.log("made it here");
-    if (content[1].nodeType == "embedded-entry-inline") {
-      console.log("I found an embedded entry line");
-      const asset = links?.assets?.block?.filter((l) => l.sys.id === id)[0];
-      console.log(links);
-      if (!asset) return <></>;
-      return <CodeBlock>{children}</CodeBlock>
-    }
-  }
+function ContentfulParagraph({id, links, root, children, ...props}) {
+  //console.log(links?.entries?.inline?.filter((l) => );
+  const code = links?.entries?.inline?.filter((l) => l.sys.id === id)[0];
+  console.log(code);
+  if (!code) return <Text as={!root && 'span'} mb={root && 6}>{children}</Text>;
 
-  return <Text as={!root && 'span'} mb={root && 6}>{children}</Text>
+  return <CodeBlock lang={code.language} numbers={true}>{code.code}</CodeBlock>
 }
 
 function mapRichText({
@@ -79,11 +73,10 @@ function mapRichText({
     .map((c) => mapRichText({
       ...c, links, h1Size, isRootElement: nodeType === 'document',
     }));
-
   const nodeTypes = {
     document: <>{innerContent}</>,
     hyperlink: <Link href={data?.uri} target="_blank" rel="noopener">{innerContent}</Link>,
-    paragraph: <ContentfulParagraph root={isRootElement} links={links} content={content} id={data?.target?.sys?.id}>{innerContent}</ContentfulParagraph>,
+    paragraph: <ContentfulParagraph root={isRootElement} links={links} id={data?.target?.sys?.id}>{innerContent}</ContentfulParagraph>,
     'heading-1': <Heading mb={4} mt={8} as="h1" fontSize={h1SizeCalculated}>{innerContent}</Heading>,
     'heading-2': <Heading mb={4} mt={8} as="h2" fontSize={getSize(h1SizeCalculated, -1)}>{innerContent}</Heading>,
     'heading-3': <Heading mb={3} mt={6} as="h3" fontSize={getSize(h1SizeCalculated, -2)}>{innerContent}</Heading>,
@@ -104,6 +97,7 @@ function mapRichText({
 export default function ContentfulRichText({ json, links, h1Size }) {
   if (!json) return <></>;
   console.log(json);
+  
   return (
     <StaticContent>
       {mapRichText({ ...json, links, h1Size })}
