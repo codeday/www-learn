@@ -53,20 +53,16 @@ function renderTextContent({ value, marks }) {
 
 function ContentfulParagraph({content, links, root, children, ...props}) {
   if (content.length === 3) {
-    console.log(content);
-    // We know that it is an embedded entry 
+    // We know that it is an embedded entry if the length of content is 3
     if (content[1].data.target) {
       const firstID = content[1].data.target.sys.id;
       const asset = links?.entries?.inline?.filter((l) => l.sys.id === firstID)[0];
-
-      console.log("Asset", asset);
 
       if (asset) {
         return <CodeBlock lang={asset.language} numbers={true}>{asset.code}</CodeBlock>
       }
     }
   }
-
 
   return <Text as={!root && 'span'} mb={root && 6}>{children}</Text>;
 }
