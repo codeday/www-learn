@@ -10,6 +10,7 @@ import Button from '@codeday/topo/Atom/Button';
 import Page from '../components/page';
 import IconBox, {HeaderIcon, HeaderText, Body} from '@codeday/topo/Molecule/IconBox';
 import Image from '@codeday/topo/Atom/Image';
+import QuizModal from '../components/QuizModal';
 import TextLoop from "react-text-loop";
 
 export default function Home({ tracks }) {
@@ -53,7 +54,7 @@ export default function Home({ tracks }) {
 			</Box>
 
 			<Text mb={0}>Not sure which track to start on? Take a fun little quiz!</Text>
-			<Box mb={5}><Button>Take Quiz</Button></Box>
+			<Box mb={5}><QuizModal/></Box>
 			<Box mt={2}><Text>We are always working on adding more tracks, keep checking back to keep learning!</Text></Box>
 			</Content>
 		</Page>
