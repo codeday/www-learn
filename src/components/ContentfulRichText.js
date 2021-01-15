@@ -53,14 +53,16 @@ function renderTextContent({ value, marks }) {
 
 function ContentfulParagraph({content, links, root, children, ...props}) {
   if (content.length === 3) {
+    console.log(content);
     // We know that it is an embedded entry 
     if (content[1].data.target) {
       const firstID = content[1].data.target.sys.id;
-      const secondID = links.entries.inline[0].sys.id
-      const blockOfCode = links.entries.inline[0]
+      const asset = links?.entries?.inline?.filter((l) => l.sys.id === firstID)[0];
 
-      if (firstID === secondID) {
-        return <CodeBlock lang={blockOfCode.language} numbers={true}>{blockOfCode.code}</CodeBlock>
+      console.log("Asset", asset);
+
+      if (asset) {
+        return <CodeBlock lang={asset.language} numbers={true}>{asset.code}</CodeBlock>
       }
     }
   }
