@@ -51,13 +51,22 @@ function renderTextContent({ value, marks }) {
 
 }
 
-function ContentfulParagraph({id, links, root, children, ...props}) {
-  //console.log(links?.entries?.inline?.filter((l) => );
-  const code = links?.entries?.inline?.filter((l) => l.sys.id === id)[0];
-  console.log(code);
-  if (!code) return <Text as={!root && 'span'} mb={root && 6}>{children}</Text>;
+function ContentfulParagraph({content, links, root, children, ...props}) {
+  if (content.length === 3) {
+    // We know that it is an embedded entry 
+    if (content[1].data.target) {
+      const firstID = content[1].data.target.sys.id;
+      const secondID = links.entries.inline[0].sys.id
+      const blockOfCode = links.entries.inline[0]
 
-  return <CodeBlock lang={code.language} numbers={true}>{code.code}</CodeBlock>
+      if (firstID === secondID) {
+        return <CodeBlock lang={blockOfCode.language} numbers={true}>{blockOfCode.code}</CodeBlock>
+      }
+    }
+  }
+
+
+  return <Text as={!root && 'span'} mb={root && 6}>{children}</Text>;
 }
 
 function mapRichText({
@@ -76,7 +85,7 @@ function mapRichText({
   const nodeTypes = {
     document: <>{innerContent}</>,
     hyperlink: <Link href={data?.uri} target="_blank" rel="noopener">{innerContent}</Link>,
-    paragraph: <ContentfulParagraph root={isRootElement} links={links} id={data?.target?.sys?.id}>{innerContent}</ContentfulParagraph>,
+    paragraph: <ContentfulParagraph root={isRootElement} links={links} content={content}>{innerContent}</ContentfulParagraph>,
     'heading-1': <Heading mb={4} mt={8} as="h1" fontSize={h1SizeCalculated}>{innerContent}</Heading>,
     'heading-2': <Heading mb={4} mt={8} as="h2" fontSize={getSize(h1SizeCalculated, -1)}>{innerContent}</Heading>,
     'heading-3': <Heading mb={3} mt={6} as="h3" fontSize={getSize(h1SizeCalculated, -2)}>{innerContent}</Heading>,

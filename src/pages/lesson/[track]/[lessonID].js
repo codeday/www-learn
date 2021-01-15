@@ -84,7 +84,6 @@ export default function Lesson() {
 
   // Let pulled data from GraphQL be set equal to the lessons variable
   const lesson = data?.learn?.lessons?.items[0];
-
   return (
     <Page slug="/">
       <Content>
