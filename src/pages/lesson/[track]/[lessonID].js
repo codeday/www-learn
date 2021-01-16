@@ -6,8 +6,10 @@ import Content from '@codeday/topo/Molecule/Content';
 import Text, { Heading, Link, CopyText } from '@codeday/topo/Atom/Text';
 import { Tooltip } from "@chakra-ui/react"
 import Button from '@codeday/topo/Atom/Button';
+import Divider from '@codeday/topo/Atom/Divider';
 import { Flex, Icon } from "@chakra-ui/core"
-import List, { Item } from '@codeday/topo/Atom/List';
+import { Item } from '@codeday/topo/Atom/List';
+import { OrderedList, List, ListItem, ListIcon, MdCheckCircle } from "@chakra-ui/react"
 import useSwr from 'swr';
 import Skelly from '@codeday/topo/Atom/Skelly';
 import { useString, apiFetch } from '@codeday/topo/utils';
@@ -63,6 +65,16 @@ const query = (trackName, lessonID) => `{
         }
       }
     }
+    tracks(limit: 10 where:{name: "${trackName}"}) {
+      items {
+        lessons {
+          items {
+            nameHeader
+            pageNumber
+          }
+        }
+      }
+    }
   }
 }`;
 
@@ -73,8 +85,9 @@ export default function Lesson() {
 
   const nextLessonLink = "http://localhost:3000/lesson/" + track + "/" + (parseInt(lessonID) + 1);
 
+  const capitalTrack = capitalizeFirstLetter("" + track);
   const { data, error } = useSwr(
-    query(track, lessonID),
+    query(capitalTrack, lessonID),
     apiFetch,
     {
       revalidateOnFocus: false,
@@ -84,6 +97,9 @@ export default function Lesson() {
 
   // Let pulled data from GraphQL be set equal to the lessons variable
   const lesson = data?.learn?.lessons?.items[0];
+  const nextLessons = data?.learn?.tracks?.items[0]?.lessons?.items;
+
+  console.log(nextLessons);
   return (
     <Page slug="/">
       <Content>
@@ -96,12 +112,19 @@ export default function Lesson() {
             ) : (
               <>
               <Content mt={5} textAlign="left">
-                <Image w="25%" src={lesson.track.logo.url}/>
-                <Text d="inline-block">Viewing Page {lesson.pageNumber} of {lesson.track.name}</Text>
-                <br></br>
                 <Tooltip label={lesson.difficulty.shortDescription} shouldWrapChildren fontSize="md" bg="gray.300" placement="bottom" hasArrow arrowSize={15}>
-                  <DifficultyBox color={lesson.difficulty.hexCodeColor}>{lesson.difficulty.name}</DifficultyBox>
+                  <DifficultyBox color={lesson.difficulty.hexCodeColor}>{lesson.difficulty.name} Lesson</DifficultyBox>
                 </Tooltip>
+                <Text mb={2} d="inline-block">Viewing Page {lesson.pageNumber} of {lesson.track.name} </Text>
+                <Text mb={0}>Contents:</Text>
+                <Box w="100%" h="1px" backgroundColor="black"></Box>
+                <OrderedList mt={1} spacing={3}>
+                {!(nextLessons) ? (
+                  <>
+                  <Text>Loading Lessons...</Text>
+                  </>
+                ) : Object.keys(nextLessons).map((key, index) => <CheckListItem key={nextLessons[key].nameHeader} info={nextLessons[key]} track={lesson.track.name}></CheckListItem> )}                
+                </OrderedList>
               </Content>
 
               </>
@@ -151,4 +174,17 @@ function skellyLines(numberOfLines) {
       {output}
     </List>
   );
+}
+
+function CheckListItem({ info, track }) {
+  const lessonLink = "http://localhost:3000/lesson/" + track + "/" + (parseInt(info.pageNumber));
+  return (
+    <ListItem>
+      <Link href={lessonLink}>{info.nameHeader}</Link>
+    </ListItem>
+  );
+}
+
+function capitalizeFirstLetter(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
 }

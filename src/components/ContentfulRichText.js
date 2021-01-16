@@ -102,9 +102,7 @@ function mapRichText({
 }
 
 export default function ContentfulRichText({ json, links, h1Size }) {
-  if (!json) return <></>;
-  console.log(json);
-  
+  if (!json) return <></>;  
   return (
     <StaticContent>
       {mapRichText({ ...json, links, h1Size })}

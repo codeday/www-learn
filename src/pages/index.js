@@ -53,8 +53,7 @@ export default function Home({ tracks }) {
 					</List>
 			</Box>
 
-			<Text mb={0}>Not sure which track to start on? Take a fun little quiz!</Text>
-			<Box mb={5}><QuizModal/></Box>
+
 			<Box mt={2}><Text>We are always working on adding more tracks, keep checking back to keep learning!</Text></Box>
 			</Content>
 		</Page>
