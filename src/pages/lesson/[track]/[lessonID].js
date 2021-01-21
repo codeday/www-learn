@@ -174,10 +174,10 @@ function skellyLines(numberOfLines) {
 }
 
 function CheckListItem({ info, track, lessonID }) {
-  const lessonLink = "http://localhost:3000/lesson/" + track + "/" + (parseInt(info.pageNumber));
+  const lessonLink = "http://localhost:3000/lesson/" + track + "/" + info.pageNumber;
   const isActive = (lessonID == info.pageNumber);
   return (
-    <Button isActive={isActive} as="a" href={{lessonLink}} w="100%" p={3} borderRadius={0} backgroundColor="#ffe8e9" borderLeft="5px #ff9598 solid" _hover={{ bg: "#ffd7d9", borderColor: "#e35d61" }} _active={{borderColor: "#e35d61"}}>
+    <Button isActive={isActive} as="a" href={lessonLink} w="100%" p={3} borderRadius={0} backgroundColor="#ffe8e9" borderLeft="5px #ff9598 solid" _hover={{ bg: "#ffd7d9", borderColor: "#e35d61" }} _active={{borderColor: "#e35d61"}}>
       <Box textAlign="left" w="100%">{info.nameHeader}</Box>
     </Button>
   );
