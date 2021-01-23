@@ -104,7 +104,7 @@ export default function Lesson() {
     <Page slug="/">
       <Content>
         <Flex size="100%" justify="left" alignItems="left" flexDirection="row" flexWrap="wrap">
-          <Box p="sticky" w="25%" h={500} backgroundColor="#ffe8e9" borderRadius={20} mr={3}>
+          <Box w="25%" h={500} backgroundColor="#ffe8e9" borderRadius={20} mr={3}>
             {!(lesson) ? (
               <>
               <Skelly h={500}></Skelly>
@@ -115,7 +115,7 @@ export default function Lesson() {
                 <Tooltip label={lesson.difficulty.shortDescription} shouldWrapChildren fontSize="md" bg="gray.300" placement="bottom" hasArrow arrowSize={15}>
                   <DifficultyBox color={lesson.difficulty.hexCodeColor}>{lesson.difficulty.name} Lesson</DifficultyBox>
                 </Tooltip>
-                <Flex textAlign="left" mt={2} size="100%" justify="left" alignItems="left" flexDirection="column" flexWrap="wrap">
+                <Flex mt={2} justify="left" alignItems="left" flexDirection="column" flexWrap="wrap">
                 {!(nextLessons) ? (
                   <>
                   <Text>Loading Lessons...</Text>
@@ -123,10 +123,8 @@ export default function Lesson() {
                 ) : Object.keys(nextLessons).map((key, index) => <CheckListItem key={nextLessons[key].nameHeader} info={nextLessons[key]} track={lesson.track.name} lessonID={lessonID}></CheckListItem> )}                
                 </Flex>
               </Content>
-
               </>
             )}
-
           </Box>
 
           <Box w="70%" textAlign="left">
@@ -177,8 +175,8 @@ function CheckListItem({ info, track, lessonID }) {
   const lessonLink = "http://localhost:3000/lesson/" + track + "/" + info.pageNumber;
   const isActive = (lessonID == info.pageNumber);
   return (
-    <Button isActive={isActive} as="a" href={lessonLink} w="100%" p={3} borderRadius={0} backgroundColor="#ffe8e9" borderLeft="5px #ff9598 solid" _hover={{ bg: "#ffd7d9", borderColor: "#e35d61" }} _active={{borderColor: "#e35d61"}}>
-      <Box textAlign="left" w="100%">{info.nameHeader}</Box>
+    <Button whiteSpace="pre-line" isActive={isActive} as="a" href={lessonLink} w="100%" borderRadius={0} backgroundColor="#ffe8e9" borderLeft="5px #ff9598 solid" _hover={{ bg: "#ffd7d9", borderColor: "#e35d61" }} _active={{borderColor: "#e35d61"}}>
+      <Box textAlign="left" w="100%" >{info.nameHeader}</Box>
     </Button>
   );
 }
