@@ -14,7 +14,6 @@ import IconBox, {
   Body,
 } from "@codeday/topo/Molecule/IconBox";
 import Image from "@codeday/topo/Atom/Image";
-import QuizModal from "../components/QuizModal";
 import TextLoop from "react-text-loop";
 
 export default function Home({ tracks }) {

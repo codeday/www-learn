@@ -14,6 +14,9 @@ import { apiFetch } from "@codeday/topo/utils";
 import ContentfulRichText from "../../../components/ContentfulRichText";
 import DifficultyBox from "../../../components/DifficultyBox";
 import Box from "@codeday/topo/Atom/Box";
+import getConfig from "next/config";
+
+const { publicRuntimeConfig } = getConfig();
 
 const query = (trackName, lessonID) => `{
   learn {
@@ -79,7 +82,7 @@ export default function Lesson() {
   console.log(track, lessonID);
 
   const nextLessonLink =
-    "http://localhost:3000/lesson/" + track + "/" + (parseInt(lessonID) + 1);
+    publicRuntimeConfig.appUrl + track + "/" + (parseInt(lessonID) + 1);
 
   const capitalTrack = capitalizeFirstLetter("" + track);
   const { data, error } = useSwr(query(capitalTrack, lessonID), apiFetch, {
@@ -211,8 +214,7 @@ function skellyLines(numberOfLines) {
 }
 
 function CheckListItem({ info, track, lessonID }) {
-  const lessonLink =
-    "http://localhost:3000/lesson/" + track + "/" + info.pageNumber;
+  const lessonLink = publicRuntimeConfig.appUrl + track + "/" + info.pageNumber;
   const isActive = lessonID == info.pageNumber;
   return (
     <Button

@@ -7,6 +7,9 @@ import Button from "@codeday/topo/Atom/Button";
 import { CodeDay } from "@codeday/topo/Atom/Logo";
 import React from "react";
 import { signIn, useSession } from "next-auth/client";
+import getConfig from "next/config";
+
+const { publicRuntimeConfig } = getConfig();
 
 // TODO: Set production domain
 const DOMAIN = "https://learn.codeday.org";
@@ -76,7 +79,7 @@ export default function Page({ children, title, darkHeader, slug }) {
               <>
                 <Button
                   onClick={() =>
-                    signIn("auth0", { callbackUrl: "http://localhost:3000/" })
+                    signIn("auth0", { callbackUrl: publicRuntimeConfig.Url })
                   }
                   variant="ghost"
                   variantColor="brand"
