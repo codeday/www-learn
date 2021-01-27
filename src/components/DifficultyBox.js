@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Box from '@chakra-ui/core/dist/Box';
-import { pureRef } from '@codeday/topo/_utils';
+import React from "react";
+import PropTypes from "prop-types";
+import Box from "@chakra-ui/core/dist/Box";
+import { pureRef } from "@codeday/topo/_utils";
 
 const DifficultyBox = pureRef(({ color, ...props }, ref) => (
   <Box
