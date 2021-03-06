@@ -1,30 +1,46 @@
-import Box from "@codeday/topo/Atom/Box";
-import Content from "@codeday/topo/Molecule/Content";
-import Text, { Heading } from "@codeday/topo/Atom/Text";
-import TextLoop from "react-text-loop";
-import Slides from "@codeday/topo/Molecule/Slides";
-import Image from "@codeday/topo/Atom/Image";
-import React from "react";
+import Box from '@codeday/topo/Atom/Box';
+import Content from '@codeday/topo/Molecule/Content';
+import Text, { Heading } from '@codeday/topo/Atom/Text';
+import TextLoop from 'react-text-loop';
+import Slides from '@codeday/topo/Molecule/Slides';
+import Image from '@codeday/topo/Atom/Image';
+import React from 'react';
+import { apiFetch } from "@codeday/topo/utils";
+import useSwr from 'swr';
+
+
+const query = () => `{
+  cms {
+    pressPhotos(limit: 10) {
+      items {
+        photo {
+          title
+          url
+          width
+          height
+        }
+      }
+    }
+  }
+}`;
 
 export default function Header() {
+  const { data, error } = useSwr(
+    query(),
+    apiFetch,
+    {
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+    }
+  );
+  const photos = data?.cms?.pressPhotos?.items || {};
+  for (var i = 0; i < photos.length; i++) {
+    if (photos[i].photo.width < 1920 || photos[i].photo.height < 1080) 
+      delete photos[i]
+  }
   return (
     <Content color="white" textAlign="center">
-      <Slides
-        position="absolute"
-        top={80}
-        left={0}
-        m="auto"
-        width="100%"
-        height={512}
-        duration={5}
-        resize="contain"
-        zIndex="-1"
-      >
-        <Image src="https://images.ctfassets.net/d5pti1xheuyu/4GiFvtLPYAw8GkzQd2qt09/13f73e4ab47a9c8b5ecd35f000f62f7d/splunk-shirts-1.jpg" />
-        <Image src="https://images.ctfassets.net/d5pti1xheuyu/329iqmgKiCoR994R1jl8RZ/e5de3587b1ea84fa20712a572d1a23b2/856517_10151245044691332_118503399_o.jpg" />
-        <Image src="https://images.ctfassets.net/d5pti1xheuyu/1Abq9YFsf3kExaM87mCyjv/ca47c0b6691cf9c8e0ab65945fb9a7d0/elect.jpg" />
-      </Slides>
-
+      <LearnSlides photos={photos} />
       <Box
         w="50%"
         textAlign="left"
@@ -47,5 +63,25 @@ export default function Header() {
         </Text>
       </Box>
     </Content>
+  );
+}
+
+function LearnSlides({ photos }) {
+  return (
+    <Slides
+      position="absolute"
+      top={80}
+      left={0}
+      m="auto"
+      width="100%"
+      height={512}
+      duration={5}
+      resize="contain"
+      zIndex="-1"
+    >
+      {Object.keys(photos).map((key, index) => (
+        <Image key={photos[key].photo.title} src={photos[key].photo.url}/>
+      ))}
+    </Slides>
   );
 }
