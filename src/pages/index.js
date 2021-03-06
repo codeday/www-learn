@@ -9,8 +9,6 @@ export default function Home() {
     <Page slug="/">
       <Header></Header>
 
-      <Divider />
-
       <Explainer></Explainer>
       
       <Divider />

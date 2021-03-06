@@ -6,10 +6,9 @@ import TextLoop from "react-text-loop";
 import { Flex, Spacer, Icon } from "@chakra-ui/react";
 import Image from "@codeday/topo/Atom/Image";
 
-
 export default function Explainer(props) {
   return (
-    <Box>
+    <Box w="100%" h="100%">
       <Content>
         <Box textAlign="center">
           <Heading mb={0} as="h4">
@@ -19,8 +18,8 @@ export default function Explainer(props) {
         </Box>
       </Content>
 
-      <Box w="100%">
-        <Flex flexDirection="column">
+      <Box textAlign="center" w="100%">
+        <Flex textAlign="center" flexDirection="column">
           <ExplainerBox img="" align="left">
             <Heading as="h1">Anything you want is possible.</Heading>
             <Text>Make things curated from top mentors and other people from the CodeDay community. We have tracks varying from discord bots all the way to websites, so anything you need is right here!</Text>
