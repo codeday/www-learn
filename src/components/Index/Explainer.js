@@ -7,6 +7,7 @@ import {
 } from 'react-icons/fa';
 import { GiIsland } from 'react-icons/gi';
 import * as React from 'react';
+import PropTypes from 'prop-types';
 
 export default function Explainer() {
   return (
@@ -75,3 +76,15 @@ function ExplainerBox({ icon, alignContent, children }) {
     </Flex>
   );
 }
+
+ExplainerBox.propTypes = {
+  icon: PropTypes.func,
+  alignContent: PropTypes.string,
+  children: PropTypes.array,
+};
+
+ExplainerBox.defaultProps = {
+  icon: FaLightbulb,
+  alignContent: 'left',
+  children: {},
+};
