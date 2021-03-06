@@ -1,14 +1,14 @@
 import Box from '@codeday/topo/Atom/Box';
 import Content from '@codeday/topo/Molecule/Content';
 import Text, { Heading } from '@codeday/topo/Atom/Text';
-import Button from '@codeday/topo/Atom/Button';
-import TextLoop from "react-text-loop";
-import { Flex, Spacer, Icon } from "@chakra-ui/react";
-import Image from "@codeday/topo/Atom/Image";
-import { FaLightbulb, FaRegLightbulb, FaBrain, FaHandsHelping } from 'react-icons/fa';
+import { Flex, Icon } from '@chakra-ui/react';
+import {
+  FaLightbulb, FaBrain, FaHandsHelping,
+} from 'react-icons/fa';
 import { GiIsland } from 'react-icons/gi';
+import * as React from 'react';
 
-export default function Explainer(props) {
+export default function Explainer() {
   return (
     <Box>
       <Content>
@@ -16,7 +16,9 @@ export default function Explainer(props) {
           <Heading as="h4">
             Discover your passion to code.
           </Heading>
-          <Text>We have mentored, guided, and helped students personally discover their interests in tech for over 10 years.</Text>
+          <Text>
+            We have mentored, guided, and helped students personally discover their interests in tech for over 10 years.
+          </Text>
         </Box>
       </Content>
 
@@ -24,12 +26,19 @@ export default function Explainer(props) {
         <Flex flexDirection="column">
           <ExplainerBox icon={FaLightbulb} alignContent="left">
             <Heading as="h1">Anything you want is possible.</Heading>
-            <Text>Make things curated from top mentors and other people from the CodeDay community. We have tracks varying from discord bots all the way to websites, so anything you need is right here!</Text>
+            <Text>
+              Make things curated from top mentors and other people from the
+              CodeDay community. We have tracks varying from discord bots all the
+              way to websites, so anything you need is right here!
+            </Text>
           </ExplainerBox>
 
           <ExplainerBox icon={FaBrain} alignContent="right">
             <Heading as="h6">Learn by Doing. Imagine it. Build it.</Heading>
-            <Text>Have you been thinking of making the next big thing? Start your journey here and we can help you do just that!</Text>
+            <Text>
+              Have you been thinking of making the next big thing? Start your
+              journey here and we can help you do just that!
+            </Text>
           </ExplainerBox>
 
           <ExplainerBox icon={FaHandsHelping} alignContent="left">
@@ -39,28 +48,30 @@ export default function Explainer(props) {
 
           <ExplainerBox icon={GiIsland} alignContent="right">
             <Heading as="h6">Land your Dream Job.</Heading>
-            <Text>Unsure of the steps needed to get to your dream job? We have you covered, start here to get the job of you dreams.</Text>
+            <Text>
+              Unsure of the steps needed to get to your dream job?
+              We have you covered, start here to get the job of you dreams.
+            </Text>
           </ExplainerBox>
         </Flex>
       </Box>
+
     </Box>
-  )
+  );
 }
 
-function ExplainerBox({icon, alignContent, children}) {
+function ExplainerBox({ icon, alignContent, children }) {
   return (
     <Flex flexDirection="row" mb={3} textAlign={alignContent} justifyContent="center" alignItems="baseline">
-      {alignContent == "left" &&
-        <Icon as={icon} w={8} h={8}></Icon>
-      }
+      {alignContent === 'left'
+        && <Icon as={icon} w={8} h={8} />}
 
       <Flex w="55%" flexDirection="column">
         {children}
       </Flex>
 
-      {alignContent == "right" &&
-        <Icon ml={1} as={icon} w={8} h={8}></Icon>
-      }
+      {alignContent === 'right'
+        && <Icon ml={1} as={icon} w={8} h={8} />}
     </Flex>
-  )
+  );
 }

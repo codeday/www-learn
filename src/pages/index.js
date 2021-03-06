@@ -1,3 +1,4 @@
+import React from "react";
 import Divider from "@codeday/topo/Atom/Divider";
 import Page from "../components/page";
 import Header from "../components/Index/Header";
