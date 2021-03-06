@@ -26,7 +26,7 @@ export default function Header(props) {
           </TextLoop>{" "}
           At Undescribable Speeds
         </Heading>
-        <Text mb={375}>
+        <Text mb={330}>
           CodeDay Learn is a new program aimed on helping newcomers and
           experienced programmers continue learning by using Project-based
           learning
