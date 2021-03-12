@@ -17,6 +17,7 @@
     "@emotion/core": "^10.0.28",
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^10.0.27",
+    "blobs": "^2.2.0",
     "emotion-theming": "^10.0.27",
     "framer-motion": "^3.10.0",
     "graphql": "^15.4.0",

@@ -8,7 +8,6 @@ import React from 'react';
 import { apiFetch } from "@codeday/topo/utils";
 import useSwr from 'swr';
 
-
 const query = () => `{
   cms {
     pressPhotos(limit: 10) {
@@ -25,22 +24,22 @@ const query = () => `{
 }`;
 
 export default function Header() {
-  const { data, error } = useSwr(
-    query(),
-    apiFetch,
-    {
-      revalidateOnFocus: false,
-      revalidateOnReconnect: false,
-    }
-  );
-  const photos = data?.cms?.pressPhotos?.items || {};
-  for (var i = 0; i < photos.length; i++) {
-    if (photos[i].photo.width < 1920 || photos[i].photo.height < 1080) 
-      delete photos[i]
-  }
   return (
     <Content color="white" textAlign="center">
-      <LearnSlides photos={photos} />
+      <Box
+        position="absolute"
+        top={0}
+        left={0}
+        m="auto"
+        textAlign="center"
+        width="100%"
+        height={512}
+        duration={5}
+        resize="contain"
+        zIndex="-1"
+      >
+        <Image h="100%" opacity="70%" src="/images/blob-scatter.png" />
+      </Box>
       <Box
         w="50%"
         textAlign="left"
