@@ -29,20 +29,6 @@ export default function Header() {
     <Content color="white" textAlign="center">
       <BlobBackground />
       <Box
-        position="absolute"
-        top={0}
-        left={0}
-        m="auto"
-        textAlign="center"
-        width="100%"
-        height={512}
-        duration={5}
-        resize="contain"
-        zIndex="-1"
-      >
-        <Image h="100%" opacity="70%" src="/images/blob-scatter.png" />
-      </Box>
-      <Box
         w="50%"
         textAlign="left"
         fontWeight="bold"

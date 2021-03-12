@@ -64,11 +64,11 @@ export default function Page({ children, title, darkHeader, slug }) {
             </a>
           </SiteLogo>
           <Menu>
-            <Button variant="ghost" variantColor="brand" as="a" href="/sponsor">
+            <Button variant="solid" variantColor="brand" as="a" href="/tracks">
               Tracks
             </Button>
             <Button
-              variant="ghost"
+              variant="solid"
               variantColor="brand"
               as="a"
               href="/volunteer"
@@ -81,8 +81,8 @@ export default function Page({ children, title, darkHeader, slug }) {
                   onClick={() =>
                     signIn("auth0", { callbackUrl: publicRuntimeConfig.Url })
                   }
-                  variant="ghost"
-                  variantColor="brand"
+                  variant="solid"
+                  variantColor="blue"
                 >
                   Sign in
                 </Button>
@@ -91,8 +91,8 @@ export default function Page({ children, title, darkHeader, slug }) {
             {session && (
               <>
                 <Button
-                  variant="ghost"
-                  variantColor="brand"
+                  variant="solid"
+                  variantColor="blue"
                   as="a"
                   href="/account"
                 >
