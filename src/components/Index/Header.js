@@ -7,6 +7,7 @@ import Image from '@codeday/topo/Atom/Image';
 import React from 'react';
 import { apiFetch } from "@codeday/topo/utils";
 import useSwr from 'swr';
+import BlobBackground from './BlobBackground';
 
 const query = () => `{
   cms {
@@ -26,6 +27,7 @@ const query = () => `{
 export default function Header() {
   return (
     <Content color="white" textAlign="center">
+      <BlobBackground position="absolute" top={0} left={0}/>
       <Box
         position="absolute"
         top={0}
