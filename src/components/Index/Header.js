@@ -27,7 +27,7 @@ const query = () => `{
 export default function Header() {
   return (
     <Content color="white" textAlign="center">
-      <BlobBackground position="absolute" top={0} left={0}/>
+      <BlobBackground />
       <Box
         position="absolute"
         top={0}
