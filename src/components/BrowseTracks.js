@@ -21,7 +21,10 @@ const query = () => `{
         name
         description
         previewProjects
-        difficulty
+        difficulty {
+          name
+          hexCodeColor
+        }
       }
     }
   }
