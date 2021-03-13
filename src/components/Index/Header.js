@@ -29,7 +29,9 @@ export default function Header() {
     <Content color="white" textAlign="center">
       <BlobBackground />
       <Box
-        w="50%"
+        w={450}
+        p={2}
+        mb={300}
         textAlign="left"
         fontWeight="bold"
         textShadow="0 0 5px rgba(0,0,0,0.7)"
@@ -43,32 +45,12 @@ export default function Header() {
           </TextLoop>{' '}
           At Undescribable Speeds
         </Heading>
-        <Text mb={330}>
+        <Text mb={0}>
           CodeDay Learn is a new program aimed on helping newcomers and
           experienced programmers continue learning by using Project-based
           learning
         </Text>
       </Box>
     </Content>
-  );
-}
-
-function LearnSlides({ photos }) {
-  return (
-    <Slides
-      position="absolute"
-      top={80}
-      left={0}
-      m="auto"
-      width="100%"
-      height={512}
-      duration={5}
-      resize="contain"
-      zIndex="-1"
-    >
-      {Object.keys(photos).map((key, index) => (
-        <Image key={photos[key].photo.title} src={photos[key].photo.url}/>
-      ))}
-    </Slides>
   );
 }
