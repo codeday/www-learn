@@ -101,6 +101,16 @@ export default function BrowseTracks() {
 function TrackBox({ info }) {
   const link = "lesson/" + info.name.replace(" ", "-").toLowerCase() + "/1";
   return (
+    <Flex
+      size="100%"
+      justify="left"
+      alignItems="left"
+      flexDirection="row"
+      flexWrap="wrap"
+    >
+      
+    </Flex>
+    /*
     <IconBox mb={2} mr={2} textAlign="left" maxWidth={325}>
       <HeaderIcon h={75}>
         <Image w="25%" src={info.logo.url} />
@@ -113,6 +123,6 @@ function TrackBox({ info }) {
           Start
         </Button>
       </Body>
-    </IconBox>
+    </IconBox>*/
   );
 }
