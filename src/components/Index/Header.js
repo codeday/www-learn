@@ -26,7 +26,7 @@ const query = () => `{
 
 export default function Header() {
   return (
-    <Content color="white" textAlign="center">
+    <Content textAlign="center">
       <BlobBackground />
       <Box
         w={450}
@@ -34,7 +34,7 @@ export default function Header() {
         mb={300}
         textAlign="left"
         fontWeight="bold"
-        textShadow="0 0 5px rgba(0,0,0,0.7)"
+        //textShadow="0 0 5px rgba(0,0,0,0.7)"
       >
         <Heading as="h1">
           <TextLoop interval={1000} fade="false">
