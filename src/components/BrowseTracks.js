@@ -15,14 +15,13 @@ import { apiFetch } from "@codeday/topo/utils";
 import Skelly from "@codeday/topo/Atom/Skelly";
 
 const query = () => `{
-	learn {
+  learn {
     tracks {
       items {
         name
-				description
-				logo {
-					url
-				}
+        description
+        previewProjects
+        difficulty
       }
     }
   }
