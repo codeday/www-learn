@@ -13,6 +13,8 @@ import Image from "@codeday/topo/Atom/Image";
 import List, { Item } from "@codeday/topo/Atom/List";
 import { apiFetch } from "@codeday/topo/utils";
 import Skelly from "@codeday/topo/Atom/Skelly";
+import DifficultyBox from './DifficultyBox';
+import PreviewProjects from './PreviewProject'
 
 const query = () => `{
   learn {
@@ -52,22 +54,13 @@ export default function BrowseTracks() {
             size="100%"
             justify="left"
             alignItems="left"
-            flexDirection="row"
+            flexDirection="column"
             flexWrap="wrap"
           >
             {!tracks ? (
               <>
-                <Item>
-                  <Skelly />
-                </Item>
-                <Item>
-                  <Skelly />
-                </Item>
-                <Item>
-                  <Skelly />
-                </Item>
-                <Item>
-                  <Skelly />
+                <Item w="100%" h={50}>
+                  <Skelly w="100%" h={50} />
                 </Item>
                 <Item>
                   <Skelly />
@@ -78,10 +71,10 @@ export default function BrowseTracks() {
               </>
             ) : (
               Object.keys(tracks).map((key, index) => (
-                <TrackBox
+                <Track
                   key={tracks[key].name}
                   info={tracks[key]}
-                ></TrackBox>
+                ></Track>
               ))
             )}
           </Flex>
@@ -98,8 +91,25 @@ export default function BrowseTracks() {
   )
 }
 
-function TrackBox({ info }) {
+function Track({ info }) {
+  console.log(info);
   const link = "lesson/" + info.name.replace(" ", "-").toLowerCase() + "/1";
+  return (
+    <Flex
+      size="100%"
+      justify="left"
+      alignItems="left"
+      flexDirection="column"
+      flexWrap="wrap"
+    >
+      <TrackHeader name={info.name} difficulty={info.difficulty} />
+      <PreviewProjects project1ID={info.previewProjects[0]} project2ID={info.previewProjects[1]} project3ID={info.previewProjects[2]} />
+      <Button variant="solid" variantColor="green" mt={1} w={150}>GO >></Button>
+    </Flex>
+  );
+}
+
+function TrackHeader({ name, difficulty }) {
   return (
     <Flex
       size="100%"
@@ -108,21 +118,10 @@ function TrackBox({ info }) {
       flexDirection="row"
       flexWrap="wrap"
     >
-      
-    </Flex>
-    /*
-    <IconBox mb={2} mr={2} textAlign="left" maxWidth={325}>
-      <HeaderIcon h={75}>
-        <Image w="25%" src={info.logo.url} />
-      </HeaderIcon>
-      <HeaderText>{info.name}</HeaderText>
-      <Body>
-        {info.description}
-        <br></br>
-        <Button as="a" href={link} mt={2} variant="solid" variantColor="brand">
-          Start
-        </Button>
-      </Body>
-    </IconBox>*/
-  );
+    <Heading mr={5}>{name}</Heading>
+    <DifficultyBox color={difficulty.hexCodeColor}>
+      {difficulty.name}
+    </DifficultyBox>
+  </Flex>
+  )
 }
