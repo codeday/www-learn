@@ -9,24 +9,9 @@ import { apiFetch } from "@codeday/topo/utils";
 import useSwr from 'swr';
 import BlobBackground from './BlobBackground';
 
-const query = () => `{
-  cms {
-    pressPhotos(limit: 10) {
-      items {
-        photo {
-          title
-          url
-          width
-          height
-        }
-      }
-    }
-  }
-}`;
-
 export default function Header() {
   return (
-    <Content color="white" textAlign="center">
+    <Content color="black" textAlign="center">
       <BlobBackground />
       <Box
         w={450}
@@ -34,21 +19,25 @@ export default function Header() {
         mb={300}
         textAlign="left"
         fontWeight="bold"
-        textShadow="0 0 5px rgba(0,0,0,0.7)"
       >
         <Heading as="h1">
-          <TextLoop interval={1000} fade="false">
-            <span>Learn</span>
-            <span>Build</span>
-            <span>Create</span>
-            <span>Make</span>
+          <Text m={0} >Make the </Text>
+          <TextLoop w="100%" interval={2000} fade="false">
+            <span>Platformer Game</span>
+            <span>Discord Bot</span>
+            <span>Android App</span>
+            <span>3D Model</span>
+            <span>Story & Dialogue</span>
+            <span>Personal Website</span>
+            <span>Sounds</span>
+            <span>Animations</span>
           </TextLoop>{' '}
-          At Undescribable Speeds
+          <Text m={0}>of your dreams</Text>
         </Heading>
         <Text mb={0}>
-          CodeDay Learn is a new program aimed on helping newcomers and
-          experienced programmers continue learning by using Project-based
-          learning
+          CodeDay Learn is a program aimed on helping newcomers 
+          and beginner programmers get inspired by computer science 
+          using project-based learning
         </Text>
       </Box>
     </Content>
