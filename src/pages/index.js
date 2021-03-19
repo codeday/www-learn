@@ -6,16 +6,16 @@ import Explainer from '../components/Index/Explainer';
 import BrowseTracks from '../components/BrowseTracks';
 import { IndexQuery } from './index.gql';
 
-export default function Home({}) {
+export default function Home({ tracks, displayProjects, random }) {
   return (
     <Page slug="/">
-      <Header />
+      <Header displayProjects={displayProjects} random={random} />
 
       <Explainer />
 
       <Divider />
 
-      <BrowseTracks />
+      <BrowseTracks tracks={tracks}/>
 
     </Page>
   );
@@ -26,8 +26,7 @@ export async function getStaticProps() {
   return {
     props: {
       tracks: data?.learn?.tracks?.items || {},
-      faqs: data?.cms?.faqs?.items || [],
-      query: data,
+      displayProjects: data,
       random: Math.random(),
     },
     revalidate: 300,

@@ -10,10 +10,10 @@ import useSwr from 'swr';
 import BlobBackground from './BlobBackground';
 import PastProjects from '../PastProjects';
 
-export default function Header() {
+export default function Header({ displayProjects, random }) {
   return (
     <Content color="black" textAlign="center">
-      <PastProjects />
+      <PastProjects query={displayProjects} random={random} />
       <Box
         w={450}
         p={2}

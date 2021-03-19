@@ -3,12 +3,6 @@ import Content from '@codeday/topo/Molecule/Content';
 import Text, { Heading } from '@codeday/topo/Atom/Text';
 import Button from '@codeday/topo/Atom/Button';
 import { Flex } from "@chakra-ui/react";
-import IconBox, {
-  HeaderIcon,
-  HeaderText,
-  Body,
-} from "@codeday/topo/Molecule/IconBox";
-import useSwr from 'swr';
 import Image from "@codeday/topo/Atom/Image";
 import List, { Item } from "@codeday/topo/Atom/List";
 import { apiFetch } from "@codeday/topo/utils";
@@ -17,16 +11,6 @@ import DifficultyBox from './DifficultyBox';
 import PreviewProjects from './PreviewProject'
 
 export default function BrowseTracks({ tracks }) {
-  const { data, error } = useSwr(
-    query(),
-    apiFetch,
-    {
-      revalidateOnFocus: false,
-      revalidateOnReconnect: false,
-    }
-  );
-  const tracks = data?.learn?.tracks?.items || {};
-
   return (
     <Content textAlign="center">
         <Heading mb={5} as="h4">

@@ -68,18 +68,3 @@ export default function PastProjects({ query, random }) {
     </Box>
   )
 }
-
-const query = () => `{
-
-}`;
-
-export async function getStaticProps() {
-  const data = await apiFetch(print(query));
-  return {
-    props: {
-      query: data,
-      random: Math.random(),
-    },
-    revalidate: 300,
-  };
-}
