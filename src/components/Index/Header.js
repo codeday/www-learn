@@ -2,21 +2,27 @@ import Box from '@codeday/topo/Atom/Box';
 import Content from '@codeday/topo/Molecule/Content';
 import Text, { Heading } from '@codeday/topo/Atom/Text';
 import TextLoop from 'react-text-loop';
-import Slides from '@codeday/topo/Molecule/Slides';
+import { Flex } from "@chakra-ui/react";
 import Image from '@codeday/topo/Atom/Image';
 import React from 'react';
-import { apiFetch } from "@codeday/topo/utils";
-import useSwr from 'swr';
 import BlobBackground from './BlobBackground';
 import PastProjects from '../PastProjects';
 
 export default function Header({ displayProjects, random }) {
   return (
-    <Content color="black" textAlign="center">
+    <Content color="black" mb={150}>
+      <Flex
+        size="100%"
+        justify="left"
+        alignItems="center"
+        flexDirection="row"
+        flexWrap="wrap"
+        mt={2}
+      >
       <Box
         w={450}
         p={2}
-        mb={300}
+        mr={5}
         textAlign="left"
         fontWeight="bold"
       >
@@ -32,7 +38,7 @@ export default function Header({ displayProjects, random }) {
             <span>Sounds</span>
             <span>Animations</span>
           </TextLoop>{' '}
-          <Text m={0}>of your dreams</Text>
+        <Text m={0}>of your dreams</Text>
         </Heading>
         <Text mb={0}>
           CodeDay Learn is a program aimed on helping newcomers 
@@ -40,7 +46,12 @@ export default function Header({ displayProjects, random }) {
           using project-based learning
         </Text>
       </Box>
-      <PastProjects w="50%" query={displayProjects} random={random} />
+
+      <Box w="50%">
+        <PastProjects query={displayProjects} random={random} />
+      </Box>
+    </Flex>
+
 
     </Content>
   );
