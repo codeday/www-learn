@@ -1,0 +1,20 @@
+fragment BrowseTracks on Query {
+  learn {
+    tracks {
+      items {
+        name
+        description
+        previewProjects {
+          name
+          media {
+            image
+          }
+        }
+        difficulty {
+          name
+          hexCodeColor
+        }
+      }
+    }
+  }
+}

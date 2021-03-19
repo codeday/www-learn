@@ -70,19 +70,7 @@ export default function PastProjects({ query, random }) {
 }
 
 const query = () => `{
-  showcase {
-    projects(where: {program: "virtual", featured: true}, take: 40) {
-      id
-      name
-      eventGroup {
-        title
-      }
-      media {
-        image(width: 512, height: 512)
-        type
-      }
-    }
-  }
+
 }`;
 
 export async function getStaticProps() {

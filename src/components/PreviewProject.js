@@ -44,7 +44,7 @@ export default function PreviewProjects({ project1ID, project2ID, project3ID }) 
   // Let pulled data from GraphQL be set equal to the project variables.
   const {project1, project2, project3} = data?.showcase || {}
 
-  console.log(project1, project2, project3);
+  // console.log(project1, project2, project3);
   return (
     <Flex
       size="100%"

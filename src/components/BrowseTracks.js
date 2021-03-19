@@ -16,23 +16,7 @@ import Skelly from "@codeday/topo/Atom/Skelly";
 import DifficultyBox from './DifficultyBox';
 import PreviewProjects from './PreviewProject'
 
-const query = () => `{
-  learn {
-    tracks {
-      items {
-        name
-        description
-        previewProjects
-        difficulty {
-          name
-          hexCodeColor
-        }
-      }
-    }
-  }
-}`;
-
-export default function BrowseTracks() {
+export default function BrowseTracks({ tracks }) {
   const { data, error } = useSwr(
     query(),
     apiFetch,
