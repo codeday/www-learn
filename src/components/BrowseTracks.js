@@ -114,7 +114,7 @@ function TrackHeader({ name, difficulty }) {
     <Flex
       size="100%"
       justify="left"
-      alignItems="left"
+      alignItems="baseline"
       flexDirection="row"
       flexWrap="wrap"
     >

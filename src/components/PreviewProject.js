@@ -42,10 +42,9 @@ export default function PreviewProjects({ project1ID, project2ID, project3ID }) 
   });
 
   // Let pulled data from GraphQL be set equal to the project variables.
-  const {project1, project2, project3} = data?.showcase
+  const {project1, project2, project3} = data?.showcase || {}
 
   console.log(project1, project2, project3);
-  console.log(project1.media[0].image);
   return (
     <Flex
       size="100%"
@@ -55,9 +54,26 @@ export default function PreviewProjects({ project1ID, project2ID, project3ID }) 
       flexWrap="wrap"
       mt={2}
     >
-      <Image src={project1.media[0].image} h={40} mr={5} borderRadius={5} />
-      <Image src={project2.media[0].image} h={40} mr={5} borderRadius={5}/>
-      <Image src={project3.media[0].image} h={40} borderRadius={5} />
+    {!project1 ? (
+      <>
+        <Item>
+          <Skelly />
+        </Item>
+        <Item>
+          <Skelly />
+        </Item>
+        <Item>
+          <Skelly />
+        </Item>
+      </>
+    ) : (
+      <>
+        <Image border="2px solid #508ec4" backgroundColor="#508ec4" src={project1.media[0].image} h={40} mr={5} borderRadius={5} />
+        <Image border="2px solid #508ec4" backgroundColor="#508ec4" src={project2.media[0].image} h={40} mr={5} borderRadius={5}/>
+        <Image border="2px solid #508ec4" backgroundColor="#508ec4" src={project3.media[0].image} h={40} borderRadius={5} />
+      </>
+      )}
+
     </Flex>
   );
 }
