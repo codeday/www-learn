@@ -13,7 +13,6 @@ import PastProjects from '../PastProjects';
 export default function Header({ displayProjects, random }) {
   return (
     <Content color="black" textAlign="center">
-      <PastProjects query={displayProjects} random={random} />
       <Box
         w={450}
         p={2}
@@ -41,6 +40,8 @@ export default function Header({ displayProjects, random }) {
           using project-based learning
         </Text>
       </Box>
+      <PastProjects w="50%" query={displayProjects} random={random} />
+
     </Content>
   );
 }

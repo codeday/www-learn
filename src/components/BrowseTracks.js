@@ -8,7 +8,6 @@ import List, { Item } from "@codeday/topo/Atom/List";
 import { apiFetch } from "@codeday/topo/utils";
 import Skelly from "@codeday/topo/Atom/Skelly";
 import DifficultyBox from './DifficultyBox';
-import PreviewProjects from './PreviewProject'
 
 export default function BrowseTracks({ tracks }) {
   return (
@@ -71,7 +70,19 @@ function Track({ info }) {
       flexWrap="wrap"
     >
       <TrackHeader name={info.name} difficulty={info.difficulty} />
-      <PreviewProjects project1ID={info.previewProjects[0]} project2ID={info.previewProjects[1]} project3ID={info.previewProjects[2]} />
+      <Flex
+        size="100%"
+        justify="left"
+        alignItems="left"
+        flexDirection="row"
+        flexWrap="wrap"
+        mt={2}
+      >
+        <Image border="2px solid #508ec4" backgroundColor="#508ec4" src={info.previewProjects[0].media[0].image} h={40} mr={5} borderRadius={5} />
+        <Image border="2px solid #508ec4" backgroundColor="#508ec4" src={info.previewProjects[1].media[0].image} h={40} mr={5} borderRadius={5}/>
+        <Image border="2px solid #508ec4" backgroundColor="#508ec4" src={info.previewProjects[2].media[0].image} h={40} borderRadius={5} />
+      </Flex>
+
       <Button variant="solid" variantColor="green" mt={1} w={150}>GO >></Button>
     </Flex>
   );
