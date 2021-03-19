@@ -64,11 +64,11 @@ export default function Page({ children, title, darkHeader, slug }) {
             </a>
           </SiteLogo>
           <Menu>
-            <Button variant="solid" variantColor="brand" as="a" href="/tracks">
+            <Button variant="ghost" variantColor="brand" as="a" href="/tracks">
               Tracks
             </Button>
             <Button
-              variant="solid"
+              variant="ghost"
               variantColor="brand"
               as="a"
               href="/volunteer"
