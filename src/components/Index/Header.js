@@ -8,10 +8,12 @@ import React from 'react';
 import { apiFetch } from "@codeday/topo/utils";
 import useSwr from 'swr';
 import BlobBackground from './BlobBackground';
+import PastProjects from '../PastProjects';
 
 export default function Header() {
   return (
     <Content color="black" textAlign="center">
+      <PastProjects />
       <Box
         w={450}
         p={2}
@@ -20,7 +22,7 @@ export default function Header() {
         fontWeight="bold"
       >
         <Heading as="h1">
-          <Text m={0} >Make the </Text>
+          <Text m={0}>Make the</Text>
           <TextLoop w="100%" interval={2000} fade="false">
             <span>Platformer Game</span>
             <span>Discord Bot</span>
