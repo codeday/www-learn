@@ -12,7 +12,6 @@ import BlobBackground from './BlobBackground';
 export default function Header() {
   return (
     <Content color="black" textAlign="center">
-      <BlobBackground />
       <Box
         w={450}
         p={2}
