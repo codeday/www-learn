@@ -21,6 +21,21 @@ export default function Explainer() {
             We have mentored, guided, and helped students personally discover their interests in tech for over 10 years.
           </Text>
         </Box>
+
+        <Box backgroundColor="#508ec4" color="white" p={5} borderRadius={10}>
+          <Heading fontSize={25}>
+            "Most teachers agree that teaching with (project-based learning) has numerous advantages especially in the field of computer science. Students
+              are able to apply their technical knowledge, acquire practical skills in programming, get involved into team processes and
+              understand in some cases even so called soft factors in project management. "
+          </Heading>
+          <Text mb={0} mt={1} >
+            Source: <em>
+              <a href="https://www.sciencedirect.com/science/article/pii/S1877042811028655">
+                Robert Pucher and Martin Lehner @ SciVerse ScienceDirect
+                </a>
+              </em>
+          </Text>
+        </Box>
       </Content>
 
       <Box>
