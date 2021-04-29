@@ -33,8 +33,8 @@ export default function PastProjects({ query, random }) {
   return (
     <Box
       position="relative"
-      width="100%"
-      height="100%"
+      width="50%"
+      height="50%"
     >
       {projects.map((p, j) => (
         <Box

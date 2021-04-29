@@ -10,10 +10,10 @@ import PastProjects from '../PastProjects';
 
 export default function Header({ displayProjects, random }) {
   return (
-    <Content color="black" mb={150}>
+    <Content color="black" mb={125}>
       <Flex
         size="100%"
-        justify="left"
+        justifyContent="space-between"
         alignItems="center"
         flexDirection="row"
         flexWrap="wrap"
@@ -47,9 +47,7 @@ export default function Header({ displayProjects, random }) {
         </Text>
       </Box>
 
-      <Box w="50%">
-        <PastProjects query={displayProjects} random={random} />
-      </Box>
+      <PastProjects query={displayProjects} random={random} />
     </Flex>
 
 
