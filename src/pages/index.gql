@@ -1,7 +1,7 @@
-#import "../components/BrowseTracksQuery.gql"
-#import "../components/PastProjectsQuery.gql"
+#import "../components/BrowseTracks.gql"
+#import "../components/PastProjects.gql"
 
 query IndexQuery {
-  ...BrowseTracksQuery
-  ...PastProjectsQuery
+  ...BrowseTracks
+  ...PastProjects
 }

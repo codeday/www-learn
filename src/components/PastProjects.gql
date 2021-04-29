@@ -1,4 +1,4 @@
-fragment PastProjectsQuery on Query {
+fragment PastProjects on Query {
   showcase {
     projects(where: {program: "virtual", featured: true}, take: 40) {
       id

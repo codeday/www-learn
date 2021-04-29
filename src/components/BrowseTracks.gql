@@ -18,3 +18,7 @@ fragment BrowseTracks on Query {
     }
   }
 }
+
+query BrowseTracksQuery {
+  ...BrowseTracks
+}
