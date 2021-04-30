@@ -17,7 +17,7 @@ export default function BrowseTracks({ tracks, hasHeader, hasSearch }) {
   const [search, setSearch] = useState();
 
   return (
-    <Content textAlign="center">
+    <Content id="tracks" textAlign="center">
       {hasHeader && hasSearch ? (
         <Flex mb={50} justifyContent="space-between">
           <Heading>Pick a Track</Heading>

@@ -7,6 +7,8 @@ import Image from '@codeday/topo/Atom/Image';
 import React from 'react';
 import BlobBackground from './BlobBackground';
 import PastProjects from '../PastProjects';
+import Button from '@codeday/topo/Atom/Button';
+
 
 export default function Header({ displayProjects, random }) {
   return (
@@ -45,6 +47,8 @@ export default function Header({ displayProjects, random }) {
           and beginner programmers get inspired by computer science 
           using project-based learning
         </Text>
+
+        <Button onClick={smoothScroll} mt={5} variant="solid" variantColor="blue" size="lg">Get Started</Button>
       </Box>
 
       <PastProjects query={displayProjects} random={random} />
@@ -53,4 +57,10 @@ export default function Header({ displayProjects, random }) {
 
     </Content>
   );
+}
+
+function smoothScroll() {
+  document.querySelector("#tracks").scrollIntoView({
+    behavior: "smooth",
+  });
 }
