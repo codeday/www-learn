@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 
 export default function Explainer() {
   return (
-    <Box>
       <Content>
         <Box textAlign="center">
           <Heading as="h4">
@@ -36,10 +35,8 @@ export default function Explainer() {
               </em>
           </Text>
         </Box>
-      </Content>
 
-      <Box>
-        <Flex flexDirection="column">
+        <Flex mt={50} flexDirection="column">
           <ExplainerBox icon={FaLightbulb} alignContent="left">
             <Heading as="h1">Anything you want is possible.</Heading>
             <Text>
@@ -70,9 +67,7 @@ export default function Explainer() {
             </Text>
           </ExplainerBox>
         </Flex>
-      </Box>
-
-    </Box>
+      </Content>
   );
 }
 
@@ -82,7 +77,7 @@ function ExplainerBox({ icon, alignContent, children }) {
       {alignContent === 'left'
         && <Icon as={icon} w={8} h={8} />}
 
-      <Flex w="55%" flexDirection="column">
+      <Flex w="100%" flexDirection="column">
         {children}
       </Flex>
 
