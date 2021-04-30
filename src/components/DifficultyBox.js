@@ -6,8 +6,7 @@ const DifficultyBox = ({ color, children, ...props }) => (
   <Box
     rounded={15}
     p={2}
-    pl={8}
-    pr={8}
+    w={200}
     backgroundColor={color}
     fontWeight="bold"
     {...props}

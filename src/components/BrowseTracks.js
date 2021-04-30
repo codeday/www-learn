@@ -111,9 +111,9 @@ function Track({ info }) {
         flexWrap="wrap"
         mt={2}
       >
-        <Image border="2px solid #508ec4" backgroundColor="#508ec4" src={info.previewProjects[0].media[0].image} h={40} mr={5} borderRadius={5} />
-        <Image border="2px solid #508ec4" backgroundColor="#508ec4" src={info.previewProjects[1].media[0].image} h={40} mr={5} borderRadius={5}/>
-        <Image border="2px solid #508ec4" backgroundColor="#508ec4" src={info.previewProjects[2].media[0].image} h={40} borderRadius={5} />
+        <Image border="2px solid #508ec4" backgroundColor="#508ec4" src={info.previewProjects[0].media[0].image} h={40} w={280} mr={5} borderRadius={5} />
+        <Image border="2px solid #508ec4" backgroundColor="#508ec4" src={info.previewProjects[1].media[0].image} h={40} w={280} mr={5} borderRadius={5}/>
+        <Image border="2px solid #508ec4" backgroundColor="#508ec4" src={info.previewProjects[2].media[0].image} h={40} w={280} borderRadius={5} />
       </Flex>
 
       <Button variant="solid" variantColor="green" mt={1} w={150}>GO >></Button>
@@ -125,12 +125,12 @@ function TrackHeader({ name, difficulty }) {
   return (
     <Flex
       alignItems="center"
-      justifyContent="flex-start"
+      justifyContent="space-between"
       flexDirection="row"
       flexWrap="wrap"
     >
-    <Heading m={0} p={0} mr={5}>{name}</Heading>
-    <DifficultyBox m={0} color={difficulty.hexCodeColor}>
+    <Heading >{name}</Heading>
+    <DifficultyBox color={difficulty.hexCodeColor}>
       {difficulty.name}
     </DifficultyBox>
   </Flex>
