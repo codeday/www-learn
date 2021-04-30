@@ -8,7 +8,7 @@ import { IndexQuery } from './index.gql';
 export default function Tracks({ tracks }) {
   return (
     <Page slug="/tracks">
-      <BrowseTracks tracks={tracks}/>
+      <BrowseTracks tracks={tracks} hasHeader={true} hasSearch={true}/>
     </Page>
   );
 }

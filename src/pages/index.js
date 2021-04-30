@@ -1,6 +1,7 @@
 import React from 'react';
 import { print } from 'graphql';
 import { apiFetch } from '@codeday/topo/utils';
+import Text, { Heading } from '@codeday/topo/Atom/Text';
 import Divider from '@codeday/topo/Atom/Divider';
 import Page from '../components/page';
 import Header from '../components/Index/Header';
@@ -17,7 +18,7 @@ export default function Home({ tracks, displayProjects, random }) {
 
       <Divider />
 
-      <BrowseTracks tracks={tracks}/>
+      <BrowseTracks tracks={tracks} hasHeader={true}/>
 
     </Page>
   );

@@ -1,20 +1,53 @@
+import React, { useState } from 'react';
 import Box from '@codeday/topo/Atom/Box';
 import Content from '@codeday/topo/Molecule/Content';
 import Text, { Heading } from '@codeday/topo/Atom/Text';
 import Button from '@codeday/topo/Atom/Button';
 import { Flex } from "@chakra-ui/react";
 import Image from "@codeday/topo/Atom/Image";
+import Input from '@codeday/topo/Atom/Input/Text';
 import List, { Item } from "@codeday/topo/Atom/List";
 import { apiFetch } from "@codeday/topo/utils";
 import Skelly from "@codeday/topo/Atom/Skelly";
 import DifficultyBox from './DifficultyBox';
+import UiSearch from '@codeday/topocons/Icon/UiSearch';
 
-export default function BrowseTracks({ tracks }) {
+
+export default function BrowseTracks({ tracks, hasHeader, hasSearch }) {
+  const [search, setSearch] = useState();
+
   return (
     <Content textAlign="center">
-        <Heading mb={5} as="h4">
-          Pick a Track
-        </Heading>
+      {hasHeader && hasSearch ? (
+        <Flex mb={50} justifyContent="space-between">
+          <Heading>Pick a Track</Heading>
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            if (search) {
+              // eslint-disable-next-line no-undef
+              window.location.href = `/projects/all/contains=${search}`;
+            }
+          }}
+          >
+            <Box d="flex">
+              <Input placeholder="Search Tracks" value={search} onChange={(e) => setSearch(e.target.value)} mr={2} />
+              <Button size="md" fontSize="xl" type="submit">
+                <UiSearch style={{
+                  position: 'absolute',
+                  left: '50%',
+                  top: '50%',
+                  transform: 'translate(-50%, -50%)',
+                }}
+                />
+              </Button>
+            </Box>
+          </form>
+        </Flex>
+      ) : (
+        hasHeader && <Heading mb={25}>Pick a Track</Heading> 
+      ) 
+      }
+
       <Box>
         <List>
           <Flex
