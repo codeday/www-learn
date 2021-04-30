@@ -124,14 +124,13 @@ function Track({ info }) {
 function TrackHeader({ name, difficulty }) {
   return (
     <Flex
-      size="100%"
-      justify="left"
-      alignItems="baseline"
+      alignItems="center"
+      justifyContent="flex-start"
       flexDirection="row"
       flexWrap="wrap"
     >
-    <Heading mr={5}>{name}</Heading>
-    <DifficultyBox color={difficulty.hexCodeColor}>
+    <Heading m={0} p={0} mr={5}>{name}</Heading>
+    <DifficultyBox m={0} color={difficulty.hexCodeColor}>
       {difficulty.name}
     </DifficultyBox>
   </Flex>

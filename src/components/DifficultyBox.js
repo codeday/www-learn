@@ -4,10 +4,10 @@ import Box from "@chakra-ui/core/dist/Box";
 
 const DifficultyBox = ({ color, children, ...props }) => (
   <Box
-    rounded={5}
-    p={1}
-    pl={2}
-    pr={2}
+    rounded={15}
+    p={2}
+    pl={8}
+    pr={8}
     backgroundColor={color}
     fontWeight="bold"
     {...props}
