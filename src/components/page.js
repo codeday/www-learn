@@ -71,9 +71,9 @@ export default function Page({ children, title, darkHeader, slug }) {
               variant="ghost"
               variantColor="brand"
               as="a"
-              href="/volunteer"
+              href="/contribute"
             >
-              Contact
+              Contribute
             </Button>
             {!session && (
               <>

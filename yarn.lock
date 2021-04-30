@@ -3228,6 +3228,13 @@
     "jwa" "^1.4.1"
     "safe-buffer" "^5.0.1"
 
+"knuth-shuffle-seeded@^1.0.6":
+  "integrity" "sha1-AfG2VzOqdUDuCNiwF0Fk0iCB5OE="
+  "resolved" "https://registry.npmjs.org/knuth-shuffle-seeded/-/knuth-shuffle-seeded-1.0.6.tgz"
+  "version" "1.0.6"
+  dependencies:
+    "seed-random" "~2.2.0"
+
 "language-subtag-registry@~0.3.2":
   "integrity" "sha512-L0IqwlIXjilBVVYKFT37X9Ih11Um5NEl9cbJIuU/SwP/zEEAbBPOnEeeuxVMf45ydWQRDQN3Nqc96OgbH1K+Pg=="
   "resolved" "https://registry.npmjs.org/language-subtag-registry/-/language-subtag-registry-0.3.21.tgz"
@@ -4533,6 +4540,11 @@
   dependencies:
     "ajv" "^6.1.0"
     "ajv-keywords" "^3.1.0"
+
+"seed-random@~2.2.0":
+  "integrity" "sha1-KpsZ4lCoFwmSMaW5mk2vgLf77VQ="
+  "resolved" "https://registry.npmjs.org/seed-random/-/seed-random-2.2.0.tgz"
+  "version" "2.2.0"
 
 "select@^1.1.2":
   "integrity" "sha1-DnNQrN7ICxEIUoeG7B1EGNEbOW0="
