@@ -81,15 +81,18 @@ export default function Lesson() {
   const { track, lessonID } = router.query;
   console.log(track, lessonID);
 
-  const nextLessonLink =
-    publicRuntimeConfig.appUrl + track + "/" + (parseInt(lessonID) + 1);
+  const nextLessonLink = publicRuntimeConfig.appUrl + track + "/" + (parseInt(lessonID) + 1);
 
-  const capitalTrack = capitalizeFirstLetter("" + track);
-  const { data, error } = useSwr(query(capitalTrack, lessonID), apiFetch, {
+  //const noHypthenTrackName = track.replaceAll("-", " ");
+  //console.log(noHypthenTrackName);
+  
+  const { data, error } = useSwr(query("Make a Text Adventure", 1), apiFetch, {
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
   });
-
+  if (data) {
+    console.log(data);
+  }
   // Let pulled data from GraphQL be set equal to the lessons variable
   const lesson = data?.learn?.lessons?.items[0];
   const nextLessons = data?.learn?.tracks?.items[0]?.lessons?.items;

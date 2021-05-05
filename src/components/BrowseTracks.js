@@ -93,7 +93,7 @@ export default function BrowseTracks({ tracks, hasHeader, hasSearch }) {
 
 function Track({ info }) {
   console.log(info);
-  const link = "lesson/" + info.name.replace(" ", "-").toLowerCase() + "/1";
+  const link = "lesson/" + info.name.replaceAll(" ", "-") + "/1";
   return (
     <Flex
       size="100%"
@@ -116,7 +116,7 @@ function Track({ info }) {
         <Image border="2px solid #508ec4" backgroundColor="#508ec4" src={info.previewProjects[2].media[0].image} h={40} w={280} borderRadius={5} />
       </Flex>
 
-      <Button variant="solid" variantColor="green" mt={1} w={150}>GO >></Button>
+      <Button as="a" href={link} variant="solid" variantColor="green" mt={1} w={150}>GO >></Button>
     </Flex>
   );
 }

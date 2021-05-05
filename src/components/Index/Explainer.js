@@ -23,7 +23,7 @@ export default function Explainer() {
 
         <Box backgroundColor="#508ec4" color="white" p={5} borderRadius={10}>
           <Heading fontSize={25}>
-            "Most teachers agree that teaching with (project-based learning) has numerous advantages especially in the field of computer science. Students
+            "Most [mentors] agree that [learning] with [project-based learning] has numerous advantages especially in the field of computer science. Students
               are able to apply their technical knowledge, acquire practical skills in programming, get involved into team processes and
               understand in some cases even so called soft factors in project management. "
           </Heading>
