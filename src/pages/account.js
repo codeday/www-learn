@@ -5,7 +5,10 @@ import Image from "@codeday/topo/Atom/Image";
 import Text, { Heading } from '@codeday/topo/Atom/Text';
 import { Flex } from "@chakra-ui/react";
 import { signIn, useSession } from "next-auth/client";
+import { Tooltip } from "@chakra-ui/react"
 import Content from '@codeday/topo/Molecule/Content';
+import { QuestionIcon } from '@chakra-ui/icons'
+
 
 export default function Account() {
   const [session, loading] = useSession();
@@ -37,6 +40,22 @@ export default function Account() {
 
           <Divider/>
           
+          <Flex flexDirection="column">
+            <Box>
+              <Heading>Recommended Tracks</Heading>
+              <Text>Our algorithims have determined that these tracks could be a good fit for you!</Text>
+            </Box>
+
+            <Box>
+              <Heading>Completed Tracks</Heading>
+              <Text>We thought it could be useful for you to see how much you have completed so far. You are doing great!</Text>
+            </Box>
+
+            <Box>
+              <Heading>Completed Lessons</Heading>
+              <Text>Lets be honest, not all of us can finish a track in one sitting. This area shows you which lessons in each track you have completed.</Text>
+            </Box>
+          </Flex>
         </Content>
       }
     </Page>
@@ -46,7 +65,11 @@ export default function Account() {
 function StatisticsBox({ statName, statValue }) {
   return (
     <Box backgroundColor="#69B9FF" p={5} w={225} borderRadius={5} textAlign="left" ml={5}>
-      <Heading fontSize={20}>{statName}</Heading>
+      <Heading fontSize={20}>{statName} 
+        <Tooltip label="Phone number" fontSize="md">
+          <QuestionIcon />
+        </Tooltip>
+      </Heading>
       <Text mb={0}>{statValue}</Text>
     </Box>
   )
