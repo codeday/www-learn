@@ -23,11 +23,14 @@ const options = {
         ? Promise.resolve(url)
         : Promise.resolve(baseUrl);
     },
-    session: async (session, user) => {
-      return Promise.resolve(session);
-    },
     jwt: async (token, user, account, profile, isNewUser) => {
+      user && (token.user = profile);
       return Promise.resolve(token);
+    },
+    session: async (session, user, sessionToken) => {
+      console.log(serverRuntimeConfig.auth0.clientId, serverRuntimeConfig.auth0.clientSecret, publicRuntimeConfig.auth0.domain);
+      session.user = user.user;
+      return Promise.resolve(session);
     },
   },
   // A database is optional, but required to persist accounts in a database

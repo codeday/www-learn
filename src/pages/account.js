@@ -7,18 +7,21 @@ import Header from '../components/Index/Header';
 import Explainer from '../components/Index/Explainer';
 import BrowseTracks from '../components/BrowseTracks';
 import { IndexQuery } from './index.gql';
+import { signIn, useSession } from "next-auth/client";
+import Content from '@codeday/topo/Molecule/Content';
 
-export default function Account({ tracks, displayProjects, random }) {
+export default function Account() {
+  const [session, loading] = useSession();
+
+  if (session) {
+    console.log(session.user);
+  }
+
   return (
-    <Page slug="/">
-      <Header displayProjects={displayProjects} random={random} />
-
-      <Explainer />
-
-      <Divider />
-
-      <BrowseTracks tracks={tracks}/>
-
+    <Page slug="/account">
+      <Content>
+        
+      </Content>
     </Page>
   );
 }

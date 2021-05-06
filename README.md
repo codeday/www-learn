@@ -1,7 +1,6 @@
 # Learn CodeDay Program
 
-A brand new program targeted at getting people learning as quick as possible. No matter your experience level, this tool will be useful.
-
+CodeDay Learn is a program aimed on helping newcomers and beginner programmers get inspired by computer science using project-based learning
 ## Running this code
 
 1. First, clone the repostiory.
