@@ -16,7 +16,7 @@ const DOMAIN = "https://learn.codeday.org";
 
 export default function Page({ children, title, darkHeader, slug }) {
   const [session, loading] = useSession();
-  console.log(session);
+  //console.log(session);
   return (
     <>
       <DefaultSeo

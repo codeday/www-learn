@@ -28,7 +28,6 @@ const options = {
       return Promise.resolve(token);
     },
     session: async (session, user, sessionToken) => {
-      console.log(serverRuntimeConfig.auth0.clientId, serverRuntimeConfig.auth0.clientSecret, publicRuntimeConfig.auth0.domain);
       session.user = user.user;
       return Promise.resolve(session);
     },
