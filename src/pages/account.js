@@ -2,6 +2,7 @@ import Divider from '@codeday/topo/Atom/Divider';
 import Page from '../components/page';
 import Box from '@codeday/topo/Atom/Box';
 import Image from "@codeday/topo/Atom/Image";
+import Button from '@codeday/topo/Atom/Button';
 import Text, { Heading } from '@codeday/topo/Atom/Text';
 import { Flex } from "@chakra-ui/react";
 import { signIn, useSession } from "next-auth/client";
@@ -28,12 +29,16 @@ export default function Account() {
   
             <Box textAlign="center" w="100%">
               <Heading>Statistics</Heading>
-              <Flex justifyContent="center" mt={5}>
-                <StatisticsBox statName="Obtained Points" statValue="0"></StatisticsBox>
+              <Flex justifyContent="center" flexDirection="row" flexWrap="wrap" mt={5}>
+                <StatisticsBox statName="Obtained Points" statValue="0" tooltipLabel="Earned by completing lessons and tracks."/>
 
                 <StatisticsBox statName="Completed Lessons" statValue="0"></StatisticsBox>
 
                 <StatisticsBox statName="Completed Tracks" statValue="0"></StatisticsBox>
+                
+                <Box w="100%">
+                  <Button as="a" href="/shop" variant="solid" variantColor="blue" mt={2} color="black">Spend Points</Button>
+                </Box>
               </Flex>
             </Box>
           </Flex>
@@ -62,14 +67,17 @@ export default function Account() {
   );
 }
 
-function StatisticsBox({ statName, statValue }) {
+function StatisticsBox({ statName, statValue, tooltipLabel }) {
   return (
     <Box backgroundColor="#69B9FF" p={5} w={225} borderRadius={5} textAlign="left" ml={5}>
-      <Heading fontSize={20}>{statName} 
-        <Tooltip label="Phone number" fontSize="md">
-          <QuestionIcon />
-        </Tooltip>
-      </Heading>
+      <Flex alignItems="baseline" flexDirection="row" flexWrap="nowrap" >
+        <Heading fontSize={20}>{statName}</Heading>
+        {tooltipLabel && 
+          <Tooltip label={tooltipLabel} fontSize="md">
+            <QuestionIcon ml={2} />
+          </Tooltip>
+        }
+      </Flex>
       <Text mb={0}>{statValue}</Text>
     </Box>
   )
